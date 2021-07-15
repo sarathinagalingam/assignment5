@@ -1,28 +1,75 @@
 import React from 'react';
-import { useContext } from 'react';
-import { useState } from 'react';
+import { useContext,useState } from 'react';
 import {Link} from 'react-router-dom';
-import username from '../../username';
+import {useForm} from 'react-hook-form';
 import data from '../../data';
 import "./login.css";
+import Select from 'react-select';
+import { useEffect } from 'react';
 
+// const option = useContext(data);
 
-const Login =()=>{
- const uservalue=useContext(username);
- const topic=useContext(data);
- const[uname,setUname]=useState(uservalue);
- //const{register,handlesubmit}=useForm()
- console.log(uname);
+const Login =({uname})=>{
  
+ const topic=useContext(data);
+ const [selectOption,Setselectoption]= useState('');
+ const[searchvalue,setSearchValue]=useState('');
+ const[show,SetShow]=useState(false);
+ const[quizid,Setquizid]=useState('')
+ 
+let addition = (e)=>{
+    Setselectoption(e.target.value);
+    SetShow(!show)
+    setSearchValue('');
+}
+useEffect(()=>{
+    for(let i=0;i<topic.length;i++){
+        if(selectOption===topic[i].topic){
+            Setquizid(topic[i].id)
+        }
+    }
+})
+
+// function submit(){
+//     if(searchvalue===" "&&selectOption===' '){
+        
+//     }
+// }
+// {pathname: `/home/${quizid}`}
  function handleChange(e){
     const loginuser = e.target.value;
-
-  setUname(loginuser);
+    
+    uname(loginuser);
  // console.log(e.target.value);
  }
 //const [quizid,setQuizid]=useState('')
 
+// function optionselec(e){
  
+//  console.log(e);
+// }
+
+let labelcheckbox = topic.filter((val)=>{
+    if(searchvalue===' '){
+        return val;
+    }else if(val.topic.toLowerCase().includes(searchvalue.toLowerCase())){
+       return val;
+    }
+}).map((data)=>{
+
+return(
+    <span class="bg-blue-100" for={data.topic} value={data.id} onClick={addition} key={data.id}>
+         <option class="px-2 py-1 " key={data.id} value={data.topic}>{data.topic}</option>
+    </span>
+)
+   
+})
+
+
+
+
+
+
     return(
         <div >
 
@@ -34,24 +81,27 @@ const Login =()=>{
                     <from action="" className="space-y-6">
                         <div>
                             <label htmlFor className="text-sm font-bold text-gray-600 block">Username</label>
-                            <input type="text" className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e)=>handleChange(e)}></input>
+                            <input type="text" required className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e)=>handleChange(e)}></input>
                         </div>
-                        <div>
-                        {/* <label htmlFor className="text-sm font-bold text-gray-600 block">assword</label>
-                            <input type="password" className="w-full p-2 border border-gray-300 rounded mt-1"></input> */}
-
-                                      <select className="w-full p-2 border border-gray-300 rounded mt-1">
+                        <div>    <label htmlFor className="text-sm font-bold text-gray-600 block">Topic</label>
+                                 <div className="w-full p-2 bg-white border border-gray-300 rounded mt-1">
+                                      <span>{selectOption}</span><input class="formcontrol" onClick={()=>SetShow(!show)} onChange={e=>setSearchValue(e.target.value)} type="text"/>
+                                  </div>
+                                  {show?
+                                     <div class="bg-blue-100">{labelcheckbox}</div>:null}
+                                  {/* <SelectSearch value={topic.id} options={topic.topic}/> */}
+                                      {/* <select name="quiztopic" ref={register()} className="w-full p-2 border border-gray-300 rounded mt-1" >
                                      {
                                      topic.map((topics)=>(
-                                         <option key={topics.id} value={topics.topic}>{topics.topic}</option>
+                                         <option key={topics.id} value={topics.id} >{topics.topic}</option>
                                          ))
                                         }
-                                     </select> 
+                                     </select>  */}
                             
-                                     <Link  to={{pathname: `/home`}} ><button class="w-full mt-5 py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm" >Submit</button></Link>
-                               
+                           
+                            {/* <Link  to={Submit()}><button class="w-full mt-5 py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm"  >Submit</button></Link> */}
                         </div>
-                        
+                        <div><Link  to={{pathname: `/home/${quizid}`}}><button class="w-full mt-5 py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm"  >Submit</button></Link></div>
                     </from>
                 </div>
             </div>
