@@ -17,6 +17,7 @@ function App() {
     {id:'1', topic:"Cricket",
      Questions:[
        { 
+         Timer:10,
          QuestionNo:1,
          QuestionTest:"Who is the highest wicket taker in Test cricket?",
          QuestionOption:[
@@ -27,6 +28,7 @@ function App() {
          ]
        },
        { 
+        Timer:15,
         QuestionNo:2,
         QuestionTest:"Ricky Ponting is also known as what?",
         QuestionOption:[
@@ -38,6 +40,7 @@ function App() {
       },
 
       { 
+        Timer:20,
         QuestionNo:3,
         QuestionTest:"Who has scored the most Test hundreds ever?",
         QuestionOption:[
@@ -48,6 +51,7 @@ function App() {
         ]
       },
       { 
+        Timer:10,
         QuestionNo:4,
         QuestionTest:"When was the first cricket Test match played?",
         QuestionOption:[
@@ -58,6 +62,7 @@ function App() {
         ]
       },
       { 
+        Timer:10,
         QuestionNo:5,
         QuestionTest:"Which player has scored the most runs in a single Test innings",
         QuestionOption:[
@@ -73,7 +78,9 @@ function App() {
 
   {id:'2', topic:"Football",
     Questions:[
-      { QuestionNo:1,
+      {
+        Timer:10,
+        QuestionNo:1,
         QuestionTest:"Who was selected for the Man of the Match Award in the finals of World Cup 2018?",
         QuestionOption:[
           {answerText:"Antoine Griezman",iscorrect:true},
@@ -83,6 +90,7 @@ function App() {
         ]
       },
       {
+        Timer:10,
         QuestionNo:2,
         QuestionTest:"Brazil has the most number of World Cup titles to its credit. How many times has it won the World Cup so far?",
         QuestionOption:[
@@ -93,6 +101,7 @@ function App() {
         ]
       },
       {
+        Timer:10,
         QuestionNo:3,
         QuestionTest:"Which country won the first football World Cup?",
         QuestionOption:[
@@ -103,6 +112,7 @@ function App() {
         ]
       },
       {
+        Timer:10,
         QuestionNo:4,
         QuestionTest:" Who of the following was awarded the Golden Boot Award for most goals in the tournament of 2014?",
         QuestionOption:[
@@ -113,6 +123,7 @@ function App() {
         ]
       },
       {
+        Timer:10,
         QuestionNo:5,
         QuestionTest:"To which country does the famous player Ronaldo, who held the record for most number of World Cup goals, belong?",
         QuestionOption:[
@@ -127,6 +138,7 @@ function App() {
     {id:'3', topic:"Olympic ",
     Questions:[
       { 
+        Timer:10,
         QuestionNo:1,
         QuestionTest:"Which country will be hosting the 2014 Winter Olympic Games?",
         QuestionOption:[
@@ -137,6 +149,7 @@ function App() {
         ]
       },
       { 
+        Timer:10,
         QuestionNo:2,
         QuestionTest:"When did India last win the hockey gold?",
         QuestionOption:[
@@ -146,7 +159,8 @@ function App() {
           {answerText:"1972",iscorrect:false},
         ]
       },
-      { 
+      {
+        Timer:10, 
         QuestionNo:3,
         QuestionTest:"In 2022, which city will be the only one in the world to have hosted both the Summer and Winter Olympics?",
         QuestionOption:[
@@ -157,6 +171,7 @@ function App() {
         ]
       },
       { 
+        Timer:10,
         QuestionNo:4,
         QuestionTest:"Who is the first Indian to win an individual gold in the Olympics?",
         QuestionOption:[
@@ -167,6 +182,7 @@ function App() {
         ]
       },
       { 
+        Timer:10,
         QuestionNo:5,
         QuestionTest:"Which country will be hosting the 2014 Winter Olympic Games?",
         QuestionOption:[
@@ -183,7 +199,7 @@ function App() {
 
   const[uname,setUname]=useState('');
   
- console.log(uname);
+//  console.log(uname);
 
   return (
      <BrowserRouter>
